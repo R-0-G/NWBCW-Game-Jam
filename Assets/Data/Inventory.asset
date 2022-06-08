@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3643b49cfc54d0e40a026336fb24d8e1, type: 3}
-  m_Name: New Active Selection
+  m_Script: {fileID: 11500000, guid: 0cde8d22a6b84864cad6611159c7d0f6, type: 3}
+  m_Name: Inventory
   m_EditorClassIdentifier: 
+  resources:
+  - {fileID: 11400000, guid: ee0d56319ff22d440ab4d0e17833b208, type: 2}
+  - {fileID: 11400000, guid: a53f704556a5b9b43bc182ec1d4750e7, type: 2}

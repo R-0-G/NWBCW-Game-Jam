@@ -6,8 +6,7 @@ using UnityEngine.AI;
 public class Human : MonoBehaviour
 {
 	public NavMeshAgent agent;
-	public Transform[] targets;
-
+	public TransformGroupManager targetManager;
 	private Transform target;
 	private Vector3 trgPos;
 
@@ -21,9 +20,9 @@ public class Human : MonoBehaviour
 	private void FindNextTarget()
 	{
 		// target = targets[Random.Range(0, targets.Length - 1)];
-		target = targets[i];
+		target = targetManager.transforms[i];
 		i++;
-		if (i >= targets.Length) i = 0;
+		if (i >= targetManager.transforms.Count) i = 0;
 		trgPos = target.position;
 
 		agent.destination = trgPos;
