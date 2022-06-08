@@ -11,6 +11,8 @@ public class Human : MonoBehaviour
 	private Transform target;
 	private Vector3 trgPos;
 
+	int i = 0;
+
 	private void Start()
 	{
 		InvokeRepeating("FindNextTarget", 1f, 5f);
@@ -18,7 +20,10 @@ public class Human : MonoBehaviour
 
 	private void FindNextTarget()
 	{
-		target = targets[Random.Range(0, targets.Length - 1)];
+		// target = targets[Random.Range(0, targets.Length - 1)];
+		target = targets[i];
+		i++;
+		if (i >= targets.Length) i = 0;
 		trgPos = target.position;
 
 		agent.destination = trgPos;
