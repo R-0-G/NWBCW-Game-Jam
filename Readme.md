@@ -29,7 +29,7 @@ A game engine that should speed up development time by having a lot of tools I a
 <li> Install "unity hub" from https://unity3d.com/get-unity/download (you may also need to create an account with unity - which might also include creating a free unity license - its been a while since I performed these steps, but I think these steps should be self-explanatory - any issues let me know)
 <li> When unity hub opens click on installs -> install editor
 <li> Choose 2021.3.4f1 & click install
-<li> You shouoldnt need to install any of the sub-components except documentation
+<li> You shouldnt need to install any of the sub-components except documentation
 </ol>
 
 ## 3. Our project
@@ -49,3 +49,18 @@ A final step is needed so that I can give you permissions to make changes to the
 >C:\Users\[name]\Documents\NWBCW\PowershellScripts\Config\sshkey.pub
 
 The public key will also generally be the file with the smaller size.
+
+### Usage tutorial
+
+After all steps in part 3 are complete were ready to push and pull to the project. 
+<ol>
+<li> If you want to get the latest version of the project, open the file PowershellScripts/pull.form.exe. This should give you all new features that ive added once you click "Submit", and allow you to open the project, hit play and test out the build 
+<li> If you have some files you want to upload, or have made some changes to the maps etc. You will need to push your changes by opening PowershellScripts/push.form.exe. You will need to add a short message here to breifly describe the change. 
+</ol
+
+Please note a few things
+<ol>
+  <li> For all changes that you push I will need to do some stuff before they are able to be pulled by others on the team. 
+  <li> Ideally push often with small changes as opposed to infrequently with lots of changes. Every push basically saves your work. 
+  <li> When adding files add them to the corresponding folder within the Assets folder, ie Assets/Textures for textures or Assets/Audio for audio - if a folder doesnt exist feel free to add it
+</ol>
