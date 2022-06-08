@@ -22,6 +22,6 @@ public class Human : MonoBehaviour
 		trgPos = target.position;
 
 		agent.destination = trgPos;
-		agent.speed = 3f;
+		agent.speed = 10f;
 	}
 }
