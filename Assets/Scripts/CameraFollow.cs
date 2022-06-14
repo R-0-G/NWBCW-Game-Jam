@@ -6,6 +6,9 @@ public class CameraFollow : MonoBehaviour
 {
 
 	[SerializeField] private float speed;
+	[SerializeField] private float zoomSpeed;
+	[SerializeField] private Camera cam;
+
 	private void Update()
 	{
 		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
@@ -24,6 +27,17 @@ public class CameraFollow : MonoBehaviour
 		{
 			transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
 		}
+
+		float scroll = Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
+
+		cam.fieldOfView += scroll;
+		cam.orthographicSize -= scroll;
+		if (cam.fieldOfView > 120) cam.fieldOfView = 120;
+		if (cam.fieldOfView < 30) cam.fieldOfView = 30;
+		if (cam.orthographicSize > 40) cam.orthographicSize = 40;
+		if (cam.orthographicSize < 1) cam.orthographicSize = 1;
+
+		// transform.Translate(0, 0, scroll * zoomSpeed, Space.World);
 
 		if (shouldShake)
 		{
