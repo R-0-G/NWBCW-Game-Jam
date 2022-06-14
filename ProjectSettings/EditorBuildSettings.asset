@@ -17,4 +17,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HUD.unity
     guid: b6fad3c2dc5f1eb41bad64b04e92ca25
+  - enabled: 1
+    path: Assets/Scenes/Hallway_Narrow.unity
+    guid: 17c956690d8e17743a6c795977e7fa87
+  - enabled: 1
+    path: Assets/Scenes/Hallway_Squeeze.unity
+    guid: 96d9c82826d3f5149bf8366a3b797379
+  - enabled: 1
+    path: Assets/Scenes/Hallway_Tests.unity
+    guid: 80c6ab10df8d66844bc555f8ab7e98b2
+  - enabled: 1
+    path: Assets/Scenes/Level_A.unity
+    guid: af02f5c420012cc4e844120ba53bd1bb
+  - enabled: 1
+    path: Assets/Scenes/Level_B.unity
+    guid: 03c08310e1c440246ac6740cda4b867b
+  - enabled: 1
+    path: Assets/Scenes/Level_C.unity
+    guid: 1cb708861c2fa4844a4e263faf540e68
   m_configObjects: {}
