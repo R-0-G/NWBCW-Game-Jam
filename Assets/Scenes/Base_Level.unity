@@ -666,6 +666,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7739696320365559427, guid: aede7d24b7da56d4b8eb1bab9098d042, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7739696320365559436, guid: aede7d24b7da56d4b8eb1bab9098d042, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -712,6 +716,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058116633355790940, guid: aede7d24b7da56d4b8eb1bab9098d042, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058116633355790940, guid: aede7d24b7da56d4b8eb1bab9098d042, type: 3}
+      propertyPath: m_ShowToolkit
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
