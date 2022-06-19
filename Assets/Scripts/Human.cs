@@ -62,7 +62,17 @@ public class Human : MonoBehaviour
 	private void FixedUpdate()
 	{
 		NextTargetCheck();
+		FriendCheck();
+		agent.destination = trgPos;
+	}
 
+	public Human GetLeader(Human other)
+	{
+		return (initiative > other.initiative) ? this : other;
+	}
+
+	private void FriendCheck()
+	{
 		if (canBefriend)
 		{
 			Human h = null;
@@ -103,12 +113,6 @@ public class Human : MonoBehaviour
 			}
 
 		}
-		agent.destination = trgPos;
-	}
-
-	public Human GetLeader(Human other)
-	{
-		return (initiative > other.initiative) ? this : other;
 	}
 
 
