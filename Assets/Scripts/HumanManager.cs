@@ -22,4 +22,15 @@ public class HumanManager : ScriptableObject
 			List.Remove(h);
 		}
 	}
+
+	public delegate void HumanEvent();
+	public event HumanEvent humanSpawned;
+
+	public void TriggerSpawnHuman()
+	{
+		if (humanSpawned != null)
+		{
+			humanSpawned();
+		}
+	}
 }

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2225743730034804179}
   - component: {fileID: 2225743730034804188}
-  - component: {fileID: 2225743730034804189}
   m_Layer: 0
   m_Name: HumanSpawner
   m_TagString: Untagged
@@ -45,19 +44,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69057d0763f1edb4d92939db14d46234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToAdd: {fileID: 1414525864679097383, guid: e2e449a4cf8f5d04395907d274b827ba, type: 3}
-  buttonIndex: 0
---- !u!114 &2225743730034804189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2225743730034804178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69057d0763f1edb4d92939db14d46234, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemToAdd: {fileID: 1414525864679097383, guid: 76fd774f15a3aa14585d315eca98fd31, type: 3}
-  buttonIndex: 1
+  datas:
+  - itemToAdd: {fileID: 0}
+    buttonIndex: 0
+    spawnEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 6364b091e631fcb4a8749bf51eb7dc55, type: 2}
+          m_TargetAssemblyTypeName: HumanManager, Assembly-CSharp
+          m_MethodName: TriggerSpawnHuman
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - itemToAdd: {fileID: 1414525864679097383, guid: 76fd774f15a3aa14585d315eca98fd31, type: 3}
+    buttonIndex: 1
+    spawnEvent:
+      m_PersistentCalls:
+        m_Calls: []

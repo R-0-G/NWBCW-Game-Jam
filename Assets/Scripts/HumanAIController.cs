@@ -1,5 +1,7 @@
 using UnityEngine;
 
+//
+
 public class HumanAIController : MonoBehaviour
 {
 	// [SerializeField] private JobaManager manager;
