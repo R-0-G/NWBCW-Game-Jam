@@ -62,11 +62,8 @@ public class ShopItemUI : MonoBehaviour
 		if (shopIndex > -1) //if we cost this resoure in some way
 		{
 			int shopCost = shopItem.cost[shopIndex];
-			Debug.LogError("Cost: " + shopCost + " resoureCount: " + resource.count);
 
 			bool newInteractable = resource.count >= shopCost;
-			Debug.LogError("new Interactable: " + newInteractable);
-			Debug.LogError("nteractable: " + isInteractable);
 			if (isInteractable != newInteractable)
 			{
 				SetInteractable(newInteractable);
