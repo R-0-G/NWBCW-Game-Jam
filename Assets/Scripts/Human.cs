@@ -15,6 +15,7 @@ public class Human : MonoBehaviour
 	[SerializeField] private float splitTimer = 5f;
 	[SerializeField] private TransformGroupManager jobs;
 	[SerializeField] private SpriteRenderer sp;
+	[SerializeField] private AudioPlayer audioPlayer;
 
 	public bool canBefriend = true;
 	private Dictionary<Human, float> friendTimers = new Dictionary<Human, float>();
@@ -50,6 +51,7 @@ public class Human : MonoBehaviour
 	{
 		if (Vector2.Distance(target.position, transform.position) < 0.01f)
 		{
+			audioPlayer.PlayRandom();
 			FindNextTarget();
 		}
 	}
