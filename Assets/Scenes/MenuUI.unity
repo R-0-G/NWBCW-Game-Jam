@@ -758,7 +758,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2b3c2c2eb7523a34a9b04e49c7e939c7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 83b040d946cac344b8ed22fff2c0d922, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1248,6 +1248,7 @@ MonoBehaviour:
   unloadSceneNames:
   - MenuUI
   loadOnStart: 0
+  singleScene: 
 --- !u!114 &1171981532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1773,6 +1774,7 @@ MonoBehaviour:
   unloadSceneNames:
   - MenuUI
   loadOnStart: 0
+  singleScene: 
 --- !u!114 &1719012022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1925,6 +1927,7 @@ MonoBehaviour:
   unloadSceneNames:
   - MenuUI
   loadOnStart: 0
+  singleScene: 
 --- !u!114 &1735693553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2077,6 +2080,7 @@ MonoBehaviour:
   unloadSceneNames:
   - MenuUI
   loadOnStart: 0
+  singleScene: 
 --- !u!114 &1820589164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2300,6 +2304,7 @@ MonoBehaviour:
   unloadSceneNames:
   - MenuUI
   loadOnStart: 0
+  singleScene: 
 --- !u!114 &1842999920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2546,6 +2551,7 @@ MonoBehaviour:
   unloadSceneNames:
   - MenuUI
   loadOnStart: 0
+  singleScene: 
 --- !u!1 &1939541263
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,6 +2610,7 @@ MonoBehaviour:
   unloadSceneNames:
   - MenuUI
   loadOnStart: 0
+  singleScene: 
 --- !u!114 &1939541266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2793,6 +2800,7 @@ MonoBehaviour:
   unloadSceneNames:
   - MenuUI
   loadOnStart: 0
+  singleScene: 
 --- !u!114 &2060170572
 MonoBehaviour:
   m_ObjectHideFlags: 0
