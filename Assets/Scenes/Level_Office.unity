@@ -876,32 +876,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2225743730034804188, guid: b2e0048ccbd918f45ae42031228cdda4, type: 3}
-      propertyPath: datas.Array.data[0].blockIfOverUI
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2e0048ccbd918f45ae42031228cdda4, type: 3}
---- !u!1 &1074777038 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2225743730034804178, guid: b2e0048ccbd918f45ae42031228cdda4, type: 3}
-  m_PrefabInstance: {fileID: 1074777037}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1074777039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074777038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33711b28d71d0214b8c99c5c8811ae1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  human: {fileID: 1414525864679097433, guid: e2e449a4cf8f5d04395907d274b827ba, type: 3}
-  doors: {fileID: 11400000, guid: 1bab44a49a4873245a34e203a6849a2d, type: 2}
-  manager: {fileID: 11400000, guid: 6364b091e631fcb4a8749bf51eb7dc55, type: 2}
 --- !u!1 &1252988283
 GameObject:
   m_ObjectHideFlags: 0

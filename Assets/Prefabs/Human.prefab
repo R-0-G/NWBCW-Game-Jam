@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2502359785319903512}
   - component: {fileID: 3448543724145335100}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Human
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,8 +55,10 @@ MonoBehaviour:
   friendTime: 5
   splitTimer: 5
   jobs: {fileID: 11400000, guid: f1d4de9003a4f7048ba465b4e21545ca, type: 2}
+  doors: {fileID: 11400000, guid: 1bab44a49a4873245a34e203a6849a2d, type: 2}
   sp: {fileID: 1414525866620934350}
   audioPlayer: {fileID: 2502359785319903512}
+  gameManager: {fileID: 11400000, guid: 0e399c03a03072249b236846270368f1, type: 2}
   canBefriend: 1
 --- !u!195 &1414525864679097432
 NavMeshAgent:
@@ -110,7 +112,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 2908474929673645171, guid: 9f2aa56ba1dc01a47a6531f5938dd07d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.547
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -205,7 +207,7 @@ GameObject:
   - component: {fileID: 1414525866620934347}
   - component: {fileID: 1414525866620934350}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2225743730034804179}
   - component: {fileID: 2225743730034804188}
+  - component: {fileID: 1074777039}
   m_Layer: 0
   m_Name: HumanSpawner
   m_TagString: Untagged
@@ -62,8 +63,26 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    blockIfOverUI: 1
   - itemToAdd: {fileID: 1414525864679097383, guid: 76fd774f15a3aa14585d315eca98fd31, type: 3}
     buttonIndex: 1
     spawnEvent:
       m_PersistentCalls:
         m_Calls: []
+    blockIfOverUI: 0
+--- !u!114 &1074777039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2225743730034804178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33711b28d71d0214b8c99c5c8811ae1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  human: {fileID: 1414525864679097433, guid: e2e449a4cf8f5d04395907d274b827ba, type: 3}
+  doors: {fileID: 11400000, guid: 1bab44a49a4873245a34e203a6849a2d, type: 2}
+  manager: {fileID: 11400000, guid: 6364b091e631fcb4a8749bf51eb7dc55, type: 2}
+  gameManager: {fileID: 11400000, guid: 0e399c03a03072249b236846270368f1, type: 2}
