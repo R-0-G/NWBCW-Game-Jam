@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,4 +17,15 @@ public class GameManager : ScriptableObject
 			GameBegin();
 		}
 	}
+
+	public int currentMoneyTarget;
+	public int[] dailyTargets;
+	public int dayCount;
+	public TimeManager timeManager; //Use time manager instead
+	public Inventory inventory;
+
+	public TransformGroupManager jobs;
+
+
+
 }
