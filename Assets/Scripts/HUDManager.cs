@@ -28,8 +28,7 @@ public class HUDManager : MonoBehaviour
 
 	private void HandleDayEnd()
 	{
-		// manager.dayCount++;
-		// manager.currentMoneyTarget = manager.dailyTargets[manager.dayCount];
+		manager.currentMoneyTarget = manager.dailyTargets[manager.timeManager.dayCount];
 	}
 
 	private void HandleNewSelection(SelectionInfo info)

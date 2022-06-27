@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class HumanAIController : MonoBehaviour
 {
-	// [SerializeField] private JobaManager manager;
-	private void Update()
-	{
+	private Human human;
+	// public Vector3 GetTarget(Human human)
+	// {
+	// 	this.human = human;
+	// 	if (human.sta)
+	// 		return Vector3.zero;
+	// }
 
-	}
 
-	public void MakeNewDecision()
-	{
-		// manager.jobs
-	}
 }

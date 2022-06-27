@@ -10,22 +10,22 @@ public class Human : MonoBehaviour
 	private Transform target;
 	private Vector3 trgPos;
 	public float initiative;
-	[SerializeField] private float friendRadius = 1f;
 	[SerializeField] private float friendTime = 5f;
 	[SerializeField] private float splitTimer = 5f;
 	[SerializeField] private TransformGroupManager jobs;
 	[SerializeField] private TransformGroupManager doors;
-	[SerializeField] private SpriteRenderer sp;
 	[SerializeField] private AudioPlayer audioPlayer;
 	[SerializeField] private GameManager gameManager;
+	[SerializeField] private HumanColliderCheck colliderCheck;
+	[SerializeField] private HumanStateMachine stateMachine;
+	[SerializeField] private HumanGraphics graphics;
 
 	public bool canBefriend = true;
 	private Dictionary<Human, float> friendTimers = new Dictionary<Human, float>();
-
-	int i = 0;
 	private bool isNight = false;
 	private bool wentToJob = false;
-	private bool isDestroying = false;
+
+
 
 	private void Awake()
 	{
@@ -66,7 +66,7 @@ public class Human : MonoBehaviour
 
 	private void NextTargetCheck()
 	{
-		if (Vector2.Distance(target.position, transform.position) < 0.01f)
+		if (colliderCheck.IsJobInRange(target))
 		{
 			audioPlayer.PlayRandom();
 			FindNextTarget();
@@ -94,7 +94,7 @@ public class Human : MonoBehaviour
 		{
 			MakeMoneyCheck();
 		}
-		if (!isDestroying)
+		if (stateMachine.state != HumanStateMachine.State.DESTROYING)
 		{
 			agent.destination = trgPos;
 		}
@@ -102,22 +102,16 @@ public class Human : MonoBehaviour
 
 	private void MakeMoneyCheck()
 	{
-		if (isNight && !isDestroying)
+		if (isNight && stateMachine.state != HumanStateMachine.State.DESTROYING)
 		{
-			Transform door = null;
-			for (int i = 0; i < doors.transforms.Count; i++)
+			if (colliderCheck.AnyDoorInRange(out Transform door))
 			{
-				door = doors.transforms[i];
-
-				if (Vector2.Distance(door.position, transform.position) < 0.1f)
+				for (int j = 0; j < gameManager.inventory.resources.Count; j++)
 				{
-					for (int j = 0; j < gameManager.inventory.resources.Count; j++)
-					{
-						gameManager.inventory.resources[j].Gain(Random.Range(0, 5)); //TODO obviously magic numbers
-					}
-					Destroy(this.gameObject);
-					isDestroying = true;
+					gameManager.inventory.resources[j].Gain(Random.Range(0, 5)); //TODO obviously magic numbers
 				}
+				stateMachine.state = HumanStateMachine.State.DESTROYING;
+				Destroy(this.gameObject);
 			}
 		}
 	}
@@ -131,43 +125,32 @@ public class Human : MonoBehaviour
 	{
 		if (canBefriend)
 		{
-			Human h = null;
-			for (int i = 0; i < targetManager.List.Count; i++)
+			if (colliderCheck.FriendableHumansInRange(out List<Human> friendables))
 			{
-				h = targetManager.List[i];
-
-				if (h != this && h.canBefriend)
+				for (int i = 0; i < friendables.Count; i++)
 				{
-					if (Vector2.Distance(h.transform.position, transform.position) < friendRadius)
+					Human h = friendables[i];
+					if (friendTimers.ContainsKey(h))
 					{
-						if (friendTimers.ContainsKey(h))
+						friendTimers[h] += Time.fixedDeltaTime;
+					}
+					else
+					{
+						friendTimers.Add(h, 0f);
+					}
+					if (friendTimers[h] > friendTime)
+					{
+						if (GetLeader(h) == h)
 						{
-							friendTimers[h] += Time.fixedDeltaTime;
+							trgPos = h.transform.position;
 						}
-						else
-						{
-							friendTimers.Add(h, 0f);
-						}
-						if (friendTimers[h] > friendTime)
-						{
-							if (GetLeader(h) == h)
-							{
-								trgPos = h.transform.position;
-							}
-						}
-						else
-						{
-							float value = Mathf.InverseLerp(0f, 1f, sp.color.r);
-							float lerpValue = friendTimers[h] / friendTime;
-							if (value < lerpValue)
-							{
-								sp.color = new Color(lerpValue, 0f, 0f, 1f);
-							}
-						}
+					}
+					else
+					{
+						graphics.SetActive(friendTimers[h] / friendTime);
 					}
 				}
 			}
-
 		}
 	}
 
@@ -175,7 +158,7 @@ public class Human : MonoBehaviour
 	[ContextMenu("ungroup")]
 	public void UnGroup()
 	{
-		sp.color = new Color(0f, 0f, 0f, 1f);
+		graphics.Ungroup();
 		friendTimers.Clear();
 		canBefriend = false;
 		FindNextTarget();

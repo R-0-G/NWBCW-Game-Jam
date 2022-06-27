@@ -20,7 +20,6 @@ public class GameManager : ScriptableObject
 
 	public int currentMoneyTarget;
 	public int[] dailyTargets;
-	public int dayCount;
 	public TimeManager timeManager; //Use time manager instead
 	public Inventory inventory;
 

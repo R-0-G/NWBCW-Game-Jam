@@ -9,10 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1414525864679097435}
+  - component: {fileID: 6829750195538057047}
   - component: {fileID: 1414525864679097433}
   - component: {fileID: 1414525864679097432}
   - component: {fileID: 2502359785319903512}
   - component: {fileID: 3448543724145335100}
+  - component: {fileID: 4651318003476985511}
+  - component: {fileID: 6897574664886034875}
   m_Layer: 0
   m_Name: Human
   m_TagString: Untagged
@@ -28,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414525864679097383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.9688425, y: 11.171214, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36,6 +39,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6829750195538057047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414525864679097383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc3947a2733431489ba1ad86f996f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sp: {fileID: 1414525866620934350}
 --- !u!114 &1414525864679097433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,14 +67,15 @@ MonoBehaviour:
   agent: {fileID: 1414525864679097432}
   targetManager: {fileID: 11400000, guid: 6364b091e631fcb4a8749bf51eb7dc55, type: 2}
   initiative: 0
-  friendRadius: 5
   friendTime: 5
   splitTimer: 5
   jobs: {fileID: 11400000, guid: f1d4de9003a4f7048ba465b4e21545ca, type: 2}
   doors: {fileID: 11400000, guid: 1bab44a49a4873245a34e203a6849a2d, type: 2}
-  sp: {fileID: 1414525866620934350}
   audioPlayer: {fileID: 2502359785319903512}
   gameManager: {fileID: 11400000, guid: 0e399c03a03072249b236846270368f1, type: 2}
+  colliderCheck: {fileID: 4651318003476985511}
+  stateMachine: {fileID: 6897574664886034875}
+  graphics: {fileID: 6829750195538057047}
   canBefriend: 1
 --- !u!195 &1414525864679097432
 NavMeshAgent:
@@ -196,6 +213,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4651318003476985511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414525864679097383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c85c2634a25c654ba3281e716ab917c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  humans: {fileID: 11400000, guid: 6364b091e631fcb4a8749bf51eb7dc55, type: 2}
+  doors: {fileID: 11400000, guid: 1bab44a49a4873245a34e203a6849a2d, type: 2}
+  friendRadius: 1
+  doorRadius: 0.1
+  jobRadius: 0.01
+--- !u!114 &6897574664886034875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414525864679097383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f986ea75e499a6489e6a061f6971ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
 --- !u!1 &1414525866620934346
 GameObject:
   m_ObjectHideFlags: 0

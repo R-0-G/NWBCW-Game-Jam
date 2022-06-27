@@ -24,8 +24,11 @@ public class TimeManager : ScriptableObject
 
 	public State timeState = State.NIGHT;
 
+	public int dayCount = 0;
+
 	public void DoStart()
 	{
+		dayCount = 0;
 		time = new DateTime(2022, 06, 14, 8, 0, 0);
 	}
 
@@ -55,6 +58,7 @@ public class TimeManager : ScriptableObject
 		}
 		else if (time.Hour == dayEndTime && timeState != State.DAYEND)
 		{
+			dayCount++;
 			timeState = State.DAYEND;
 			OnDayEnd.Invoke();
 		}
