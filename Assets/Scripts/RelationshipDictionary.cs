@@ -17,7 +17,24 @@ public class RelationshipDictionary : MonoBehaviour
 		relationshipTimers.Clear();
 	}
 
-	public void FixedUpdateTimer(Human h, out float highestRelationship) //returns max timer
+	public void ClearInProgress()
+	{
+		foreach (var k in relationshipTimers.Keys)
+		{
+			if (!IsLocked(k))
+			{
+				relationshipTimers[k] = 0f;
+			}
+		}
+	}
+
+	public bool IsLocked(Human h)
+	{
+		if (!relationshipTimers.ContainsKey(h)) return false;
+		return relationshipTimers[h] == lockedInRelationshipTimer;
+	}
+
+	public float UpdateRelationship(Human h) //returns max timer
 	{
 		if (relationshipTimers.ContainsKey(h))
 		{
@@ -27,18 +44,19 @@ public class RelationshipDictionary : MonoBehaviour
 		{
 			relationshipTimers.Add(h, 0f);
 		}
-		highestRelationship = 0f; //TODO
-								  // if (relationshipTimers[h] > friendTime)
-								  // {
-								  // 	if (GetLeader(h) == h)
-								  // 	{
-								  // 		trgPos = h.transform.position;
-								  // 	}
-								  // }
-								  // else
-								  // {
-								  // 	graphics.SetActive(friendTimers[h] / friendTime);
-								  // }
+		return relationshipTimers[h];
+		// highestRelationship = 0f; //TODO
+		// if (relationshipTimers[h] > friendTime)
+		// {
+		// 	if (GetLeader(h) == h)
+		// 	{
+		// 		trgPos = h.transform.position;
+		// 	}
+		// }
+		// else
+		// {
+		// 	graphics.SetActive(friendTimers[h] / friendTime);
+		// }
 	}
 
 }

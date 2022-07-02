@@ -6,76 +6,52 @@ using UnityEngine.AI;
 public class Human : MonoBehaviour
 {
 	public NavMeshAgent agent;
-	public HumanManager targetManager;
-	private Transform target;
-	private Vector3 trgPos;
+	public HumanManager humanManager;
 	public float initiative;
-	[SerializeField] private float friendTime = 5f;
 	[SerializeField] private float splitTimer = 5f;
-	[SerializeField] private TransformGroupManager jobs;
-	[SerializeField] private TransformGroupManager doors;
-	[SerializeField] private AudioPlayer audioPlayer;
 	[SerializeField] private GameManager gameManager;
-	[SerializeField] private HumanColliderCheck colliderCheck;
 	[SerializeField] private HumanStateMachine stateMachine;
 	[SerializeField] private HumanGraphics graphics;
+	[SerializeField] private RelationshipManager relationshipManager;
+	[SerializeField] private HumanAIController aIController;
+	[SerializeField] private HumanColliderCheck colliderCheck;
+	[SerializeField] private float highest;
 
 	public bool canBefriend = true;
-	private Dictionary<Human, float> friendTimers = new Dictionary<Human, float>();
-	private bool isNight = false;
-	private bool wentToJob = false;
 
 
 
 	private void Awake()
 	{
-		targetManager.Add(this);
-		gameManager.timeManager.OnNight.AddListener(HandleNight);
-
+		humanManager.Add(this);
+		stateMachine.onStateChanged += HandleStateChanged;
 	}
 
 	private void OnDestroy()
 	{
-		targetManager.Remove(this);
-		gameManager.timeManager.OnNight.RemoveListener(HandleNight);
+		humanManager.Remove(this);
+		stateMachine.onStateChanged -= HandleStateChanged;
 	}
 
-	private void HandleNight()
+	private void HandleStateChanged(HumanStateMachine.State prev, HumanStateMachine.State next)
 	{
-		isNight = true;
-		trgPos = doors.transforms[Random.Range(0, doors.transforms.Count)].position;
+		if (next == HumanStateMachine.State.DESTROYING)
+		{
+			Destroy(this.gameObject);
+		}
+		if (prev == HumanStateMachine.State.WORKING && next == HumanStateMachine.State.SLACKING)
+		{
+			for (int j = 0; j < gameManager.inventory.resources.Count; j++)
+			{
+				gameManager.inventory.resources[j].Gain(Random.Range(0, 5)); //TODO obviously magic numbers
+			}
+		}
 	}
 
 	private void Start()
 	{
 		agent.speed = 10f;
 		initiative = Random.value;
-		FindNextTarget();
-
-	}
-
-	private void FindNextTarget()
-	{
-		if (CanActAutonomously() || !wentToJob) //went To job is hack
-		{
-			wentToJob = true;
-			target = jobs.transforms[Random.Range(0, jobs.transforms.Count)];
-			trgPos = target.position;
-		}
-	}
-
-	private void NextTargetCheck()
-	{
-		if (colliderCheck.IsJobInRange(target))
-		{
-			audioPlayer.PlayRandom();
-			FindNextTarget();
-		}
-	}
-
-	private bool CanActAutonomously()
-	{
-		return false;
 	}
 
 	public void EnableFriendship()
@@ -85,83 +61,72 @@ public class Human : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (!isNight)
-		{
-			NextTargetCheck();
-			FriendCheck();
-		}
-		else
-		{
-			MakeMoneyCheck();
-		}
-		if (stateMachine.state != HumanStateMachine.State.DESTROYING)
-		{
-			agent.destination = trgPos;
-		}
-	}
+		agent.destination = aIController.GetTarget();
 
-	private void MakeMoneyCheck()
-	{
-		if (isNight && stateMachine.state != HumanStateMachine.State.DESTROYING)
+		if (canBefriend)
 		{
-			if (colliderCheck.AnyDoorInRange(out Transform door))
+			if (colliderCheck.FriendableHumansInRange(out List<Human> humans))
 			{
-				for (int j = 0; j < gameManager.inventory.resources.Count; j++)
+				for (int i = 0; i < humans.Count; i++)
 				{
-					gameManager.inventory.resources[j].Gain(Random.Range(0, 5)); //TODO obviously magic numbers
+					relationshipManager.UpdateRelationship(humans[i], out highest);
 				}
-				stateMachine.state = HumanStateMachine.State.DESTROYING;
-				Destroy(this.gameObject);
+				graphics.SetActive(highest);
 			}
 		}
+
+
 	}
+
 
 	public Human GetLeader(Human other)
 	{
 		return (initiative > other.initiative) ? this : other;
 	}
 
-	private void FriendCheck()
-	{
-		if (canBefriend)
-		{
-			if (colliderCheck.FriendableHumansInRange(out List<Human> friendables))
-			{
-				for (int i = 0; i < friendables.Count; i++)
-				{
-					Human h = friendables[i];
-					if (friendTimers.ContainsKey(h))
-					{
-						friendTimers[h] += Time.fixedDeltaTime;
-					}
-					else
-					{
-						friendTimers.Add(h, 0f);
-					}
-					if (friendTimers[h] > friendTime)
-					{
-						if (GetLeader(h) == h)
-						{
-							trgPos = h.transform.position;
-						}
-					}
-					else
-					{
-						graphics.SetActive(friendTimers[h] / friendTime);
-					}
-				}
-			}
-		}
-	}
+	// private void FriendCheck()
+	// {
+	// 	if (canBefriend) //canbefriend should probably go in relationshipdict
+	// 	{
+	// 		if (colliderCheck.FriendableHumansInRange(out List<Human> friendables))
+	// 		{
+	// 			for (int i = 0; i < friendables.Count; i++)
+	// 			{
+	// 				Human h = friendables[i];
+	// 				if (friendTimers.ContainsKey(h))
+	// 				{
+	// 					friendTimers[h] += Time.fixedDeltaTime;
+	// 				}
+	// 				else
+	// 				{
+	// 					friendTimers.Add(h, 0f);
+	// 				}
+	// 				if (friendTimers[h] > friendTime)
+	// 				{
+	// 					if (GetLeader(h) == h)
+	// 					{
+	// 						trgPos = h.transform.position;
+	// 					}
+	// 				}
+	// 				else
+	// 				{
+	// 					graphics.SetActive(friendTimers[h] / friendTime);
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
 
 
 	[ContextMenu("ungroup")]
 	public void UnGroup()
 	{
 		graphics.Ungroup();
-		friendTimers.Clear();
+		// relationshipManager
+		// friendTimers.Clear();
+		relationshipManager.ClearInProgress();
 		canBefriend = false;
-		FindNextTarget();
+		// FindNextTarget();
 		Invoke("EnableFriendship", splitTimer);
 	}
 }

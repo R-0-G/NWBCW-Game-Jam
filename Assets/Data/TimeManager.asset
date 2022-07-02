@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f0db17808a1694b8722770f2d90afa, type: 3}
   m_Name: TimeManager
   m_EditorClassIdentifier: 
-  dayDurationInSeconds: 50
+  dayDurationInSeconds: 240
   nightTime: 18
   lunchTime: 13
   morningTime: 8
   breakTime: 11
+  dayEndTime: 0
   OnMorning:
     m_PersistentCalls:
       m_Calls: []
@@ -29,3 +30,8 @@ MonoBehaviour:
   OnNight:
     m_PersistentCalls:
       m_Calls: []
+  OnDayEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  timeState: 4
+  dayCount: 1

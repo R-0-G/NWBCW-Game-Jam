@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
+[CreateAssetMenu]
 public class JobManager : ScriptableObject
 {
 	public List<Job> jobs = new List<Job>();
@@ -25,6 +26,21 @@ public class JobManager : ScriptableObject
 	public void BuildJobDict()
 	{
 		jobDict = jobs.GroupBy(x => x.JobType).ToDictionary(x => x.Key, x => x.ToList());
+	}
+
+	public Job GetRandom(bool unassigned = false)
+	{
+		if (unassigned)
+		{
+			List<Job> availJobs = jobs.Where(x => !x.human).ToList();
+			return availJobs[Random.Range(0, availJobs.Count)];
+		}
+		return jobs[Random.Range(0, jobs.Count)];
+	}
+
+	public Job GetRandom(JobType type)
+	{
+		return jobDict[type][Random.Range(0, jobDict[type].Count)];
 	}
 
 

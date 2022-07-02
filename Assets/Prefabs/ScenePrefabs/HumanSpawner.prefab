@@ -46,30 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   datas:
-  - itemToAdd: {fileID: 0}
-    buttonIndex: 0
-    spawnEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 11400000, guid: 6364b091e631fcb4a8749bf51eb7dc55, type: 2}
-          m_TargetAssemblyTypeName: HumanManager, Assembly-CSharp
-          m_MethodName: TriggerSpawnHuman
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    blockIfOverUI: 1
   - itemToAdd: {fileID: 1414525864679097383, guid: 76fd774f15a3aa14585d315eca98fd31, type: 3}
     buttonIndex: 1
     spawnEvent:
       m_PersistentCalls:
         m_Calls: []
-    blockIfOverUI: 0
+    blockIfOverUI: 1
 --- !u!114 &1074777039
 MonoBehaviour:
   m_ObjectHideFlags: 0

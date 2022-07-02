@@ -20,9 +20,9 @@ public class HumanSpawner : MonoBehaviour
 		gameManager.timeManager.OnMorning.RemoveListener(HandleMorning);
 	}
 
+
 	private void HandleMorning()
 	{
-		Debug.LogError("HANDLING MORNING");
 		for (int i = 0; i < gameManager.jobs.transforms.Count; i++)
 		{
 			manager.TriggerSpawnHuman();
