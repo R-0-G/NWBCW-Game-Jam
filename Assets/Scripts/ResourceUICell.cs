@@ -10,10 +10,34 @@ public class ResourceUICell : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI nameText;
 	[SerializeField] private Image icon;
 
-	public void Configure(Resource resource)
+	private Resource resource;
+
+	public void Configure(Resource resource, int resourceOverride = -1)
 	{
+		this.resource = resource;
+		resource.GainedResource += HandleChanged;
+		resource.SpentResource += HandleChanged;
 		if (icon) icon.sprite = resource.icon;
-		if (countText) countText.text = resource.count.ToString();
+		UpdateCount(resourceOverride != -1 ? resourceOverride : resource.count);
 		if (nameText) nameText.text = resource.resourceName.ToString();
+	}
+
+	private void UpdateCount(int count)
+	{
+		if (countText)
+		{
+			countText.text = count.ToString();
+		}
+	}
+
+	private void OnDestroy()
+	{
+		resource.GainedResource -= HandleChanged;
+		resource.SpentResource -= HandleChanged;
+	}
+
+	private void HandleChanged(int count, Resource resource)
+	{
+		UpdateCount(resource.count);
 	}
 }
