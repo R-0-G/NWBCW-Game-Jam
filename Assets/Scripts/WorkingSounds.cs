@@ -14,7 +14,7 @@ public class WorkingSounds : MonoBehaviour
 	private void Update()
 	{
 		int count = manager.List.Where(x => x.StateMachine.CurrentState == HumanStateMachine.State.WORKING).Count();
-		count = Mathf.Clamp(count, 0, workingClips.Length);
+		count = Mathf.Clamp(count, 0, workingClips.Length - 1);
 
 		if (count != lastHumansCuont)
 		{
