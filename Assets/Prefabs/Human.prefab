@@ -78,6 +78,26 @@ MonoBehaviour:
   relationshipManager: {fileID: 2026430829708935396}
   aIController: {fileID: 8121912143288955565}
   colliderCheck: {fileID: 4651318003476985511}
+  highest: 0
+  productivityRecharge: 5
+  maxHappySpeed: 10
+  minHappySpeed: 3
+  overrideSpeed: 30
+  zombieValue: 0
+  unionCutoff: 10
+  unionWinCutoff: 2
+  source: {fileID: 3448543724145335100}
+  yawns:
+  - {fileID: 8300000, guid: 974a35904a8464147bf39b629a47d67a, type: 3}
+  - {fileID: 8300000, guid: d9d60d1281f3b294d91dbf58cd66db0a, type: 3}
+  - {fileID: 8300000, guid: 74fa273ee49d0b4419c2f51e38eaaafa, type: 3}
+  - {fileID: 8300000, guid: 8141bb544496e1247ba0442d9d2397f6, type: 3}
+  - {fileID: 8300000, guid: d438f5f70dedec344abc67f56d62935e, type: 3}
+  - {fileID: 8300000, guid: d6414b79e26dc874abc15d8254b48041, type: 3}
+  dooropen: {fileID: 8300000, guid: e849967571e6924439c126950c4691e4, type: 3}
+  randomYawnCutoff: 0.05
+  randomYawnDelay: 20
+  happiness: 1
   canBefriend: 1
 --- !u!195 &1414525864679097432
 NavMeshAgent:
@@ -131,7 +151,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 2908474929673645171, guid: 9f2aa56ba1dc01a47a6531f5938dd07d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.547
+  m_Volume: 0.42
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -282,6 +302,7 @@ MonoBehaviour:
   relationshipLevels:
   - {fileID: 8784050364520516882}
   - {fileID: 2375975690435687204}
+  isLocked: 0
 --- !u!1 &1414525866620934346
 GameObject:
   m_ObjectHideFlags: 0

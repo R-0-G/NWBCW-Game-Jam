@@ -16,6 +16,10 @@ public class HUDManager : MonoBehaviour
 	[SerializeField] private Resource money;
 	[SerializeField] private GameObject winScreen;
 	[SerializeField] private GameObject loseScreen;
+	[SerializeField] private GameObject loseUnion;
+	[SerializeField] private AudioClip winAudio;
+	[SerializeField] private AudioClip loseAudio;
+	[SerializeField] private AudioSource source;
 	private int moneyRaised = 0;
 
 	private void Awake()
@@ -29,6 +33,7 @@ public class HUDManager : MonoBehaviour
 		moneyRaised = 0;
 		progressSlider.value = 0;
 		progressSlider.maxValue = manager.currentMoneyTarget;
+		manager.TriggerGameBegin();
 
 	}
 
@@ -37,15 +42,22 @@ public class HUDManager : MonoBehaviour
 		moneyRaised += count;
 		progressSlider.value = moneyRaised;
 	}
-	private void HandleGameEnd(bool won)
+	private void HandleGameEnd(int won)
 	{
-		if (won)
+		if (won == 0)
 		{
+			source.PlayOneShot(winAudio);
 			winScreen.SetActive(true);
+		}
+		else if (won == 1)
+		{
+			source.PlayOneShot(loseAudio);
+			loseScreen.SetActive(true);
 		}
 		else
 		{
-			loseScreen.SetActive(true);
+			source.PlayOneShot(loseAudio);
+			loseUnion.SetActive(true);
 		}
 	}
 
@@ -67,12 +79,12 @@ public class HUDManager : MonoBehaviour
 	{
 		if (manager.currentMoneyTarget < moneyRaised)
 		{
-			manager.TriggerGameEnd(false);
+			manager.TriggerGameEnd(1);
 		}
 
 		else if (manager.dailyTargets.Length <= manager.timeManager.dayCount)
 		{
-			manager.TriggerGameEnd(true);
+			manager.TriggerGameEnd(0);
 		}
 
 		moneyRaised = 0;

@@ -5,9 +5,11 @@ using UnityEngine;
 public class RelationshipManager : MonoBehaviour
 {
 	public List<RelationshipDictionary> relationshipLevels;
+	public bool isLocked = false;
 
 	public int UpdateRelationship(Human h, out float highest)
 	{
+
 		highest = 0f;
 		for (int i = 0; i < relationshipLevels.Count; i++)
 		{
@@ -27,10 +29,12 @@ public class RelationshipManager : MonoBehaviour
 
 	public void ClearInProgress()
 	{
+		isLocked = true;
 		for (int i = 0; i < relationshipLevels.Count; i++)
 		{
 			RelationshipDictionary level = relationshipLevels[i];
 			level.ClearInProgress();
 		}
+		isLocked = false;
 	}
 }

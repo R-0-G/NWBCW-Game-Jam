@@ -8,11 +8,13 @@ public class HumanSpawner : MonoBehaviour
 	[SerializeField] private TransformGroupManager doors;
 	[SerializeField] private HumanManager manager;
 	[SerializeField] private GameManager gameManager;
+	[SerializeField] private AudioSource source;
 
 	private void Awake()
 	{
 		manager.humanSpawned += HandleSpawn;
 		gameManager.timeManager.OnMorning.AddListener(HandleMorning);
+		manager.splitSource = source;
 	}
 	private void OnDestroy()
 	{
@@ -25,17 +27,16 @@ public class HumanSpawner : MonoBehaviour
 	{
 		for (int i = 0; i < gameManager.jobs.transforms.Count; i++)
 		{
-			manager.TriggerSpawnHuman();
+			bool zomb = i < gameManager.zombieCount;
+			bool union = (i < gameManager.zombieCount + gameManager.zombieCount) && !zomb;
+			manager.TriggerSpawnHuman(zomb, union);
 		}
 	}
 
-	private void HandleSpawn()
+	private void HandleSpawn(bool zomb, bool union)
 	{
 		Transform t = doors.transforms[Random.Range(0, doors.transforms.Count)];
-		Instantiate(human, t.position, t.rotation);
-	}
-	private void Start()
-	{
-		//HandleSpawn();
+		Human h = Instantiate(human, t.position, t.rotation);
+		h.Configure(zomb, union);
 	}
 }

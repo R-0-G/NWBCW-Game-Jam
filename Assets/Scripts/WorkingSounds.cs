@@ -34,8 +34,8 @@ public class WorkingSounds : MonoBehaviour
 				{
 					someWorking.TransitionTo(fadeTime);
 				}
-				count = Mathf.Clamp(count, 1, workingClips.Length) - 1;
-				source.clip = workingClips[count];
+				int index = Mathf.Clamp(count, 1, workingClips.Length) - 1;
+				source.clip = workingClips[index];
 				source.Play();
 			}
 			else

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Placer : MonoBehaviour
 {
+	[SerializeField] private Human human;
+	[SerializeField] private TransformGroupManager doors;
+	[SerializeField] private HumanManager man;
 	private bool canPlace = false;
 	private ShopItem item;
 	public void Configure(ShopItem item)
@@ -27,6 +30,8 @@ public class Placer : MonoBehaviour
 			if (Input.GetMouseButtonDown(0))
 			{
 				Instantiate(item.job, position, Quaternion.identity);
+				Instantiate(human, doors.GetRandom().position, Quaternion.identity);
+				man.splitSource.PlayOneShot(man.cash);
 				Destroy(this.gameObject);
 			}
 		}

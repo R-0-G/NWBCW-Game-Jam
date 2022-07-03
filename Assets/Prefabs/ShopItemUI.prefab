@@ -526,6 +526,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  humanMan: {fileID: 11400000, guid: 6364b091e631fcb4a8749bf51eb7dc55, type: 2}
 --- !u!114 &2097530460975307757
 MonoBehaviour:
   m_ObjectHideFlags: 0

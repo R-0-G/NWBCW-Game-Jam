@@ -6,6 +6,8 @@ using UnityEngine;
 public class HumanManager : ScriptableObject
 {
 	public List<Human> List = new List<Human>();
+	public AudioClip cash;
+	public AudioSource splitSource;
 	// public 
 
 	public void Add(Human h)
@@ -24,14 +26,14 @@ public class HumanManager : ScriptableObject
 		}
 	}
 
-	public delegate void HumanEvent();
+	public delegate void HumanEvent(bool zomb, bool union);
 	public event HumanEvent humanSpawned;
 
-	public void TriggerSpawnHuman()
+	public void TriggerSpawnHuman(bool zomb, bool union)
 	{
 		if (humanSpawned != null)
 		{
-			humanSpawned();
+			humanSpawned(zomb, union);
 		}
 	}
 }

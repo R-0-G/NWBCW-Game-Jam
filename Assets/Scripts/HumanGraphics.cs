@@ -19,4 +19,9 @@ public class HumanGraphics : MonoBehaviour
 			sp.color = new Color(lerpValue, 0f, 0f, 1f);
 		}
 	}
+
+	public void ConfigureZombie()
+	{
+
+	}
 }

@@ -33,7 +33,16 @@ public class JobManager : ScriptableObject
 		if (unassigned)
 		{
 			List<Job> availJobs = jobs.Where(x => !x.human).ToList();
-			return availJobs[Random.Range(0, availJobs.Count)];
+			int index = Random.Range(0, availJobs.Count);
+			if (index >= availJobs.Count)
+			{
+				index = availJobs.Count - 1;
+			}
+			if (availJobs.Count == 0)
+			{
+				return null;
+			}
+			return availJobs[index];
 		}
 		return jobs[Random.Range(0, jobs.Count)];
 	}

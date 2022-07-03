@@ -26,15 +26,28 @@ public class TimeManager : ScriptableObject
 
 	public int dayCount = 0;
 
+	private float scale = 1f;
+
 	public void DoStart()
 	{
 		dayCount = 0;
 		time = new DateTime(2022, 06, 14, 8, 0, 0);
 	}
 
+	public void EnableFastForward()
+	{
+		scale = 10f;
+	}
+
+	public void DisableFastForward()
+	{
+		scale = 1f;
+	}
+
+
 	public void DoUpdate()
 	{
-		time = time.AddSeconds(Time.deltaTime * (86400f / dayDurationInSeconds));
+		time = time.AddSeconds(Time.deltaTime * (86400f / dayDurationInSeconds) * scale);
 
 		if (time.Hour == nightTime && timeState != State.NIGHT)
 		{

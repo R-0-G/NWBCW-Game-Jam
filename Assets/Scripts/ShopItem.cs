@@ -11,4 +11,5 @@ public class ShopItem : ScriptableObject
 	public string Description;
 	public string Title;
 	public Job job;
+	public AudioClip buyClip;
 }

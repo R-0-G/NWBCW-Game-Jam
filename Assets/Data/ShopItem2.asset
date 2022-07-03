@@ -18,3 +18,5 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: a0d8f882016ba1541a9c89012ba73ce2, type: 3}
   Description: Description of shop Item 2
   Title: Shop Item 2
+  job: {fileID: 926668122995074432, guid: 64be00fd513d473409cccf45589ed2b7, type: 3}
+  buyClip: {fileID: 8300000, guid: 8141bb544496e1247ba0442d9d2397f6, type: 3}

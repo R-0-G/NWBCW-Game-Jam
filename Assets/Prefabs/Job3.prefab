@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 926668122995074433}
   - component: {fileID: 926668122995074432}
   m_Layer: 0
-  m_Name: Job
+  m_Name: Job3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,9 +74,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: 2563ea202ce25224a81822a29392fdd0, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: 0f6975971a8c0cb448a14dc27354a33d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -112,7 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 20
-  cashReturn: 20
+  cashReturn: 40
   manager: {fileID: 11400000, guid: bb19ca5e0e49ef54babe063d5dbe0a81, type: 2}
   jobType: {fileID: 11400000, guid: d47d363125123324c955b028b8d75f99, type: 2}
+  anim: {fileID: 3237464424374391470, guid: 8efa5e9762b2caa4d932bd697bf5ced2, type: 3}
   human: {fileID: 0}

@@ -20,6 +20,8 @@ public class ShopItemUI : MonoBehaviour
 	public UnityEvent onInteractable;
 	public UnityEvent onNotInteractable;
 
+	[SerializeField] private HumanManager humanMan;
+
 	private bool isInteractable = false;
 
 	public void Configure(ShopItem item)
@@ -95,5 +97,7 @@ public class ShopItemUI : MonoBehaviour
 			shopItemResource.Spend(shopCount);
 		}
 		Instantiate(placerPrefab).Configure(shopItem);
+		humanMan.splitSource.PlayOneShot(shopItem.buyClip);
+
 	}
 }

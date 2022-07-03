@@ -7,19 +7,24 @@ using UnityEngine;
 public class GameManager : ScriptableObject
 {
 	public delegate void GameEvent();
-	public delegate void BoolEvent(bool b);
+	public delegate void BoolEvent(int b);
 	public GameEvent GameBegin;
 	public BoolEvent GameEnd;
+
+	public int zombieCount = 0;
+	public int unionCount = 0;
 
 	public void TriggerGameBegin()
 	{
 		if (GameBegin != null)
 		{
+			zombieCount = 0;
+			unionCount = 0;
 			GameBegin();
 		}
 	}
 
-	public void TriggerGameEnd(bool won)
+	public void TriggerGameEnd(int won)
 	{
 		if (GameEnd != null)
 		{

@@ -47,6 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   humans: {fileID: 11400000, guid: 6364b091e631fcb4a8749bf51eb7dc55, type: 2}
   radius: 5
+  one: {fileID: 8300000, guid: 98c73017e7c88864c9f279cbd0888e5c, type: 3}
+  two: {fileID: 8300000, guid: e5c19c0337633c24aa057f2be8a5027d, type: 3}
+  four: {fileID: 8300000, guid: 5605117ac259c1342baa5eea29947966, type: 3}
+  seven: {fileID: 8300000, guid: 31dd8ea9b51e424408745cccd3d669b2, type: 3}
 --- !u!1 &1414525866620934346
 GameObject:
   m_ObjectHideFlags: 0

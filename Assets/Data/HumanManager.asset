@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: HumanManager
   m_EditorClassIdentifier: 
   List: []
+  cash: {fileID: 8300000, guid: 8141bb544496e1247ba0442d9d2397f6, type: 3}
+  splitSource: {fileID: 0}
