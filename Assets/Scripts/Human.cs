@@ -17,6 +17,8 @@ public class Human : MonoBehaviour
 	[SerializeField] private HumanColliderCheck colliderCheck;
 	[SerializeField] private float highest;
 
+	public HumanStateMachine StateMachine => stateMachine;
+
 	public bool canBefriend = true;
 
 
@@ -74,8 +76,6 @@ public class Human : MonoBehaviour
 				graphics.SetActive(highest);
 			}
 		}
-
-
 	}
 
 
