@@ -22,4 +22,9 @@ public class TransformGroupManager : ScriptableObject
 			transforms.Remove(t);
 		}
 	}
+
+	public Transform GetRandom()
+	{
+		return transforms[Random.Range(0, transforms.Count)];
+	}
 }

@@ -10,4 +10,5 @@ public class ShopItem : ScriptableObject
 	public Sprite sprite;
 	public string Description;
 	public string Title;
+	public Job job;
 }

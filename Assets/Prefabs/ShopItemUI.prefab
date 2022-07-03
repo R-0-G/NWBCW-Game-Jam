@@ -447,6 +447,7 @@ MonoBehaviour:
   resourcePrefab: {fileID: 4544267900012628099, guid: 343a0299e49c8e64688e9de5c442d739, type: 3}
   resourceContainer: {fileID: 4033445920419799720}
   inv: {fileID: 11400000, guid: 742831761df8aa64f8a43267cc7e3aaa, type: 2}
+  placerPrefab: {fileID: 795258594744853293, guid: c999a5019ddb8a246bfece2508fc9264, type: 3}
   onInteractable:
     m_PersistentCalls:
       m_Calls:

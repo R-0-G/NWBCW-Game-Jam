@@ -10,6 +10,31 @@ public class Job : MonoBehaviour
 
 	public JobType JobType => jobType;
 
+	public Human human;
+
+	public float Duration => duration;
+	public int CashReturn => cashReturn;
+
+	public void SetHuman(Human h)
+	{
+		if (human)
+		{
+			human.GetComponent<HumanStateMachine>().onStateChanged -= HandleStateChange;
+
+		}
+		human = h;
+		human.GetComponent<HumanStateMachine>().onStateChanged += HandleStateChange;
+	}
+
+	private void HandleStateChange(HumanStateMachine.State prev, HumanStateMachine.State next)
+	{
+		if (human)
+		{
+			human.GetComponent<HumanStateMachine>().onStateChanged -= HandleStateChange;
+		}
+		human = null;
+	}
+
 	private void Awake()
 	{
 		manager.Add(this);
@@ -18,5 +43,10 @@ public class Job : MonoBehaviour
 	private void OnDestroy()
 	{
 		manager.Remove(this);
+		if (human)
+		{
+			human.GetComponent<HumanStateMachine>().onStateChanged -= HandleStateChange;
+
+		}
 	}
 }

@@ -7,8 +7,9 @@ using UnityEngine;
 public class GameManager : ScriptableObject
 {
 	public delegate void GameEvent();
+	public delegate void BoolEvent(bool b);
 	public GameEvent GameBegin;
-	public GameEvent GameEnd;
+	public BoolEvent GameEnd;
 
 	public void TriggerGameBegin()
 	{
@@ -18,9 +19,16 @@ public class GameManager : ScriptableObject
 		}
 	}
 
+	public void TriggerGameEnd(bool won)
+	{
+		if (GameEnd != null)
+		{
+			GameEnd(won);
+		}
+	}
+
 	public int currentMoneyTarget;
 	public int[] dailyTargets;
-	public int dayCount;
 	public TimeManager timeManager; //Use time manager instead
 	public Inventory inventory;
 

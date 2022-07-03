@@ -15,6 +15,8 @@ public class ShopItemUI : MonoBehaviour
 	public RectTransform resourceContainer;
 	public Inventory inv;
 
+	public Placer placerPrefab;
+
 	public UnityEvent onInteractable;
 	public UnityEvent onNotInteractable;
 
@@ -58,7 +60,6 @@ public class ShopItemUI : MonoBehaviour
 	private void HandleResourceUpdated(int count, Resource resource)
 	{
 		int shopIndex = shopItem.resources.IndexOf(resource);
-		Debug.LogError(shopIndex);
 		if (shopIndex > -1) //if we cost this resoure in some way
 		{
 			int shopCost = shopItem.cost[shopIndex];
@@ -93,5 +94,6 @@ public class ShopItemUI : MonoBehaviour
 			int shopCount = shopItem.cost[i];
 			shopItemResource.Spend(shopCount);
 		}
+		Instantiate(placerPrefab).Configure(shopItem);
 	}
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class HumanManager : ScriptableObject
 {
 	public List<Human> List = new List<Human>();
+	// public 
 
 	public void Add(Human h)
 	{
