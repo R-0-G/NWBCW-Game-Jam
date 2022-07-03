@@ -14,6 +14,19 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &-8200042221866291313
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SFX Active
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 6a9adec86f815a94487b758a69107879
+  m_FloatValues:
+    b3f38f98d56afb74d88d5dfc69bbc703: -15.421314
+    a226899ca6e1d5e4bb2f05ef9987d4f4: -21.302507
+  m_TransitionOverrides: {}
 --- !u!244 &-5690587895965099948
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -28,6 +41,20 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &-5172608788295383386
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Music-Only (see trello for when this occurs)
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: ae4333c7299622d47a80c9a5d990a2db
+  m_FloatValues:
+    b3f38f98d56afb74d88d5dfc69bbc703: 0.27000841
+    a226899ca6e1d5e4bb2f05ef9987d4f4: -11.944499
+    1dbd0b9c714879241ac0d306c7d5bd6a: -4.560346
+  m_TransitionOverrides: {}
 --- !u!243 &-4006756721170835708
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -92,6 +119,9 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
+  - {fileID: 2753735464101815667}
+  - {fileID: -8200042221866291313}
+  - {fileID: -5172608788295383386}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -105,7 +135,7 @@ AudioMixerController:
     - 9966c8a7c8a22584ba2c026f61c2263c
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: -5172608788295383386}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -152,6 +182,19 @@ AudioMixerSnapshotController:
   m_SnapshotID: 4cbb6eccffa92284bb5577226dcc75cd
   m_FloatValues:
     b3f38f98d56afb74d88d5dfc69bbc703: -0.025776558
+  m_TransitionOverrides: {}
+--- !u!245 &2753735464101815667
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: General
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 397c3fec077fbd04f84cad1ce1b23dd4
+  m_FloatValues:
+    b3f38f98d56afb74d88d5dfc69bbc703: -3.5090396
+    a226899ca6e1d5e4bb2f05ef9987d4f4: -2.018035
   m_TransitionOverrides: {}
 --- !u!243 &2908474929673645171
 AudioMixerGroupController:
