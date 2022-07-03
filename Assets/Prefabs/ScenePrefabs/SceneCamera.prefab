@@ -295,6 +295,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5ebdd1d33d7799348ad0800b45aeba1a, type: 3}
   - {fileID: 8300000, guid: 0e2c856d487680941aa3b3ed3cc86d9a, type: 3}
   source: {fileID: 5299936124863578563}
+  noWorking: {fileID: 2753735464101815667, guid: 9f2aa56ba1dc01a47a6531f5938dd07d, type: 2}
+  someWorking: {fileID: -8200042221866291313, guid: 9f2aa56ba1dc01a47a6531f5938dd07d, type: 2}
+  fadeTime: 0.5
 --- !u!1 &7739696320365559425
 GameObject:
   m_ObjectHideFlags: 0
