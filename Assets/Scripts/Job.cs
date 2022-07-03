@@ -7,7 +7,6 @@ public class Job : MonoBehaviour
 	[SerializeField] private int cashReturn;
 	[SerializeField] private JobManager manager;
 	[SerializeField] private JobType jobType;
-	[SerializeField] private GameObject anim;
 
 	public JobType JobType => jobType;
 
@@ -33,7 +32,7 @@ public class Job : MonoBehaviour
 		{
 			human.GetComponent<HumanStateMachine>().onStateChanged -= HandleStateChange;
 		}
-		Instantiate(anim, transform);
+
 		human = null;
 	}
 

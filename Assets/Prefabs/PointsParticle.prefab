@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1311883568777974642}
   - component: {fileID: 5494275168368330764}
   - component: {fileID: 5611933291696254008}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 149952976896618686}
   - component: {fileID: 5233811545620539918}
   - component: {fileID: 5586448972370086102}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PointsParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceName: Coins
   icon: {fileID: 21300000, guid: ad53b2ef1de46cb4faf52b50769fcb34, type: 3}
-  count: 5
+  count: 20

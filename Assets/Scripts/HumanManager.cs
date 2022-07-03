@@ -7,6 +7,7 @@ public class HumanManager : ScriptableObject
 {
 	public List<Human> List = new List<Human>();
 	public AudioClip cash;
+	public AudioClip thud;
 	public AudioSource splitSource;
 	// public 
 

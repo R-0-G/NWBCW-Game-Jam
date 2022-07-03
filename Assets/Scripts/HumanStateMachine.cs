@@ -17,14 +17,14 @@ public class HumanStateMachine : MonoBehaviour
 	private void Awake()
 	{
 		aiController.CompletedJob += HandleCompletedJob;
-		timeManager.OnBreak.AddListener(HandleOnBreak);
+		// timeManager.OnBreak.AddListener(HandleOnBreak);
 		timeManager.OnLunch.AddListener(HandleOnBreak);
 		timeManager.OnNight.AddListener(HandleOnDayEnd);
 	}
 	private void OnDestroy()
 	{
 		aiController.CompletedJob -= HandleCompletedJob;
-		timeManager.OnBreak.RemoveListener(HandleOnBreak);
+		// timeManager.OnBreak.RemoveListener(HandleOnBreak);
 		timeManager.OnLunch.RemoveListener(HandleOnBreak);
 		timeManager.OnNight.RemoveListener(HandleOnDayEnd);
 	}

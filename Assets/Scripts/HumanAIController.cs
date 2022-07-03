@@ -11,6 +11,7 @@ public class HumanAIController : MonoBehaviour
 	[SerializeField] private float breakTime = 25f;
 	[SerializeField] private float autonomyTick = 5f;
 	[SerializeField] private Human human;
+	[SerializeField] private GameObject anim;
 
 
 	private Job currentJob;
@@ -38,18 +39,20 @@ public class HumanAIController : MonoBehaviour
 		if (CompletedJob != null)
 		{
 			CompletedJob();
+			Instantiate(anim, currentJob.transform);
 			Invoke("TryToActAutonomously", autonomyTick);
 		}
 	}
 
 	private void ReturnToJob()
 	{
-		stateMachine.TriggerStateChange(HumanStateMachine.State.FINDING_JOB);
+		if (stateMachine.CurrentState != HumanStateMachine.State.DESTROYING || stateMachine.CurrentState != HumanStateMachine.State.GOING_HOME)
+			stateMachine.TriggerStateChange(HumanStateMachine.State.FINDING_JOB);
 	}
 
 	private void TryToActAutonomously()
 	{
-		// human.a
+
 	}
 
 	private void HandleStateChange(HumanStateMachine.State prev, HumanStateMachine.State next)
@@ -58,7 +61,15 @@ public class HumanAIController : MonoBehaviour
 		{
 			case HumanStateMachine.State.FINDING_JOB:
 				currentJob = jobs.GetRandom(true);
-				currentJob.SetHuman(human);
+				if (currentJob == null)
+				{
+					stateMachine.TriggerStateChange(HumanStateMachine.State.SLACKING);
+					Invoke("ReturnToJob", 1f);
+				}
+				else
+				{
+					currentJob.SetHuman(human);
+				}
 				break;
 			case HumanStateMachine.State.WORKING:
 				Invoke("JobComplete", currentJob.Duration);

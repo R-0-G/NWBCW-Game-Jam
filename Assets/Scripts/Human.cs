@@ -199,18 +199,22 @@ public class Human : MonoBehaviour
 	[ContextMenu("ungroup")]
 	public void UnGroup()
 	{
-		graphics.Ungroup();
-		// relationshipManager
-		// friendTimers.Clear();
-		// relationshipManager.ClearInProgress();
-		stateMachine.TriggerStateChange(HumanStateMachine.State.FINDING_JOB);
-		canBefriend = false;
-		speedOverride = true;
-		Invoke("Slow", 0.5f);
-		// FindNextTarget();
-		Invoke("EnableFriendship", splitTimer);
-		happiness = 0f;
-		ZombieCheck();
+		if (stateMachine.CurrentState != HumanStateMachine.State.DESTROYING || stateMachine.CurrentState != HumanStateMachine.State.GOING_HOME)
+		{
+			graphics.Ungroup();
+			// relationshipManager
+			// friendTimers.Clear();
+			// relationshipManager.ClearInProgress();
+			stateMachine.TriggerStateChange(HumanStateMachine.State.FINDING_JOB);
+			canBefriend = false;
+			speedOverride = true;
+			Invoke("Slow", 0.5f);
+			// FindNextTarget();
+			Invoke("EnableFriendship", splitTimer);
+			happiness = 0f;
+			ZombieCheck();
+
+		}
 	}
 
 	private void Slow()

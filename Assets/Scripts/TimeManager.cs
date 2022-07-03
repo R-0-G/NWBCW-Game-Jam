@@ -36,7 +36,7 @@ public class TimeManager : ScriptableObject
 
 	public void EnableFastForward()
 	{
-		scale = 10f;
+		scale = 20f;
 	}
 
 	public void DisableFastForward()

@@ -12,13 +12,19 @@ public class ResourceUICell : MonoBehaviour
 
 	private Resource resource;
 
+	private int resourceover = -1;
+
 	public void Configure(Resource resource, int resourceOverride = -1)
 	{
+		if (resourceover == -1)
+		{
+			resourceover = resourceOverride;
+		}
 		this.resource = resource;
 		resource.GainedResource += HandleChanged;
 		resource.SpentResource += HandleChanged;
 		if (icon) icon.sprite = resource.icon;
-		UpdateCount(resourceOverride != -1 ? resourceOverride : resource.count);
+		UpdateCount(resourceover != -1 ? resourceover : resource.count);
 		if (nameText) nameText.text = resource.resourceName.ToString();
 	}
 
@@ -38,6 +44,10 @@ public class ResourceUICell : MonoBehaviour
 
 	private void HandleChanged(int count, Resource resource)
 	{
-		UpdateCount(resource.count);
+		if (resourceover == -1)
+		{
+			UpdateCount(resource.count);
+
+		}
 	}
 }

@@ -287,6 +287,7 @@ MonoBehaviour:
   breakTime: 15
   autonomyTick: 5
   human: {fileID: 1414525864679097433}
+  anim: {fileID: 3237464424374391470, guid: 8efa5e9762b2caa4d932bd697bf5ced2, type: 3}
 --- !u!114 &2026430829708935396
 MonoBehaviour:
   m_ObjectHideFlags: 0

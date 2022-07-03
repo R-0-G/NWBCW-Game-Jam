@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class HUDManager : MonoBehaviour
 {
@@ -20,10 +21,33 @@ public class HUDManager : MonoBehaviour
 	[SerializeField] private AudioClip winAudio;
 	[SerializeField] private AudioClip loseAudio;
 	[SerializeField] private AudioSource source;
+
+	public UnityEvent OnMorning;
+	public UnityEvent OnBreak;
+	public UnityEvent OnLunch;
+	public UnityEvent OnNight;
+	public UnityEvent OnDayEnd;
+
 	private int moneyRaised = 0;
+
+	public TMPro.TextMeshProUGUI goal;
+	public TMPro.TextMeshProUGUI current;
+
+
+
+	// private void Update()
+	// {
+	// }
 
 	private void Awake()
 	{
+
+		manager.timeManager.OnMorning.AddListener(OnMorning.Invoke);
+		manager.timeManager.OnBreak.AddListener(OnBreak.Invoke);
+		manager.timeManager.OnLunch.AddListener(OnLunch.Invoke);
+		manager.timeManager.OnNight.AddListener(OnNight.Invoke);
+		manager.timeManager.OnDayEnd.AddListener(OnDayEnd.Invoke);
+
 		selectionManager.NewSelection += HandleNewSelection;
 		manager.timeManager.OnDayEnd.AddListener(HandleDayEnd);
 		manager.timeManager.OnMorning.AddListener(HandleMorning);
@@ -39,6 +63,8 @@ public class HUDManager : MonoBehaviour
 
 	private void HandleGained(int count, Resource r)
 	{
+		goal.text = "Goal: " + manager.currentMoneyTarget.ToString() + "$";
+		current.text = "Current: " + moneyRaised + "$";
 		moneyRaised += count;
 		progressSlider.value = moneyRaised;
 	}
@@ -63,6 +89,11 @@ public class HUDManager : MonoBehaviour
 
 	private void OnDestroy()
 	{
+		manager.timeManager.OnMorning.RemoveListener(OnMorning.Invoke);
+		manager.timeManager.OnBreak.RemoveListener(OnBreak.Invoke);
+		manager.timeManager.OnLunch.RemoveListener(OnLunch.Invoke);
+		manager.timeManager.OnNight.RemoveListener(OnNight.Invoke);
+		manager.timeManager.OnDayEnd.RemoveListener(OnDayEnd.Invoke);
 		selectionManager.NewSelection -= HandleNewSelection;
 		manager.GameEnd -= HandleGameEnd;
 		manager.timeManager.OnDayEnd.RemoveListener(HandleDayEnd);
