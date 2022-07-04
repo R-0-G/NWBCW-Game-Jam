@@ -61,6 +61,11 @@ public class Human : MonoBehaviour
 	{
 		humanManager.Add(this);
 		stateMachine.onStateChanged += HandleStateChanged;
+
+		if (gameManager.dailyTargets.Length == gameManager.timeManager.dayCount + 1)
+		{
+			graphics.ConfigureZombie();
+		}
 	}
 
 	private void OnDestroy()
@@ -132,7 +137,7 @@ public class Human : MonoBehaviour
 						relationshipManager.UpdateRelationship(humans[i], out highest);
 					}
 				}
-				graphics.SetActive(highest);
+				// graphics.SetActive(highest);
 			}
 		}
 

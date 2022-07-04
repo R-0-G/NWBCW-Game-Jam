@@ -115,5 +115,7 @@ MonoBehaviour:
   cashReturn: 10
   manager: {fileID: 11400000, guid: bb19ca5e0e49ef54babe063d5dbe0a81, type: 2}
   jobType: {fileID: 11400000, guid: d47d363125123324c955b028b8d75f99, type: 2}
-  anim: {fileID: 3237464424374391470, guid: 8efa5e9762b2caa4d932bd697bf5ced2, type: 3}
+  activecol: {r: 0.9254902, g: 0.85490197, b: 0.8509804, a: 0.972549}
+  inactivecol: {r: 1, g: 1, b: 1, a: 1}
+  sp: {fileID: 926668122995074438}
   human: {fileID: 0}

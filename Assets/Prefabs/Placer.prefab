@@ -48,6 +48,7 @@ MonoBehaviour:
   human: {fileID: 1414525864679097433, guid: e2e449a4cf8f5d04395907d274b827ba, type: 3}
   doors: {fileID: 11400000, guid: 1bab44a49a4873245a34e203a6849a2d, type: 2}
   man: {fileID: 11400000, guid: 6364b091e631fcb4a8749bf51eb7dc55, type: 2}
+  sp: {fileID: -7252031773445949889}
 --- !u!212 &-7252031773445949889
 SpriteRenderer:
   m_ObjectHideFlags: 0

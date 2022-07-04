@@ -8,7 +8,12 @@ public class Job : MonoBehaviour
 	[SerializeField] private JobManager manager;
 	[SerializeField] private JobType jobType;
 
+	public Color activecol;
+	public Color inactivecol;
+
 	public JobType JobType => jobType;
+
+	public SpriteRenderer sp;
 
 	public Human human;
 
@@ -23,6 +28,7 @@ public class Job : MonoBehaviour
 
 		}
 		human = h;
+		sp.color = activecol;
 		human.GetComponent<HumanStateMachine>().onStateChanged += HandleStateChange;
 	}
 
@@ -33,6 +39,7 @@ public class Job : MonoBehaviour
 			human.GetComponent<HumanStateMachine>().onStateChanged -= HandleStateChange;
 		}
 
+		sp.color = inactivecol;
 		human = null;
 	}
 

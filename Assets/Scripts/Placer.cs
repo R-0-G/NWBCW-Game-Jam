@@ -7,11 +7,13 @@ public class Placer : MonoBehaviour
 	[SerializeField] private Human human;
 	[SerializeField] private TransformGroupManager doors;
 	[SerializeField] private HumanManager man;
+	[SerializeField] private SpriteRenderer sp;
 	private bool canPlace = false;
 	private ShopItem item;
 	public void Configure(ShopItem item)
 	{
 		this.item = item;
+		sp.sprite = item.sprite;
 		Invoke("CanPlace", 0.05f);
 	}
 
@@ -29,9 +31,10 @@ public class Placer : MonoBehaviour
 		{
 			if (Input.GetMouseButtonDown(0))
 			{
-				Instantiate(item.job, position, Quaternion.identity);
+				Job j = Instantiate(item.job, position, Quaternion.identity);
+				j.sp.sprite = item.sprite;
 				Instantiate(human, doors.GetRandom().position, Quaternion.identity);
-				man.splitSource.PlayOneShot(man.cash);
+				man.splitSource.PlayOneShot(man.thud);
 				Destroy(this.gameObject);
 			}
 		}

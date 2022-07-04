@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a85984029d6c34fa00ef1de63d4348, type: 3}
   m_Name: ShopItem1
   m_EditorClassIdentifier: 
-  cost: 0500000014000000
+  cost: 05000000
   resources:
   - {fileID: 11400000, guid: ee0d56319ff22d440ab4d0e17833b208, type: 2}
-  - {fileID: 11400000, guid: a53f704556a5b9b43bc182ec1d4750e7, type: 2}
   sprite: {fileID: 21300000, guid: 1c161df132ef122469c63ab5fcb63cb6, type: 3}
   Description: Description of shop Item 1
   Title: Shop Item 1

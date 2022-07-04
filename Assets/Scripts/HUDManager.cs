@@ -63,9 +63,9 @@ public class HUDManager : MonoBehaviour
 
 	private void HandleGained(int count, Resource r)
 	{
-		goal.text = "Goal: " + manager.currentMoneyTarget.ToString() + "$";
-		current.text = "Current: " + moneyRaised + "$";
+		goal.text = "Goal: " + manager.currentMoneyTarget.ToString() + "K $";
 		moneyRaised += count;
+		current.text = "Current: " + moneyRaised + "K $";
 		progressSlider.value = moneyRaised;
 	}
 	private void HandleGameEnd(int won)
@@ -103,12 +103,16 @@ public class HUDManager : MonoBehaviour
 	private void HandleMorning()
 	{
 		progressSlider.maxValue = manager.currentMoneyTarget;
+		moneyRaised = 0;
+		goal.text = "Goal: " + manager.currentMoneyTarget.ToString() + "K $";
+		current.text = "Current: " + moneyRaised + "K $";
+		progressSlider.value = moneyRaised;
 
 	}
 
 	private void HandleDayEnd()
 	{
-		if (manager.currentMoneyTarget < moneyRaised)
+		if (manager.currentMoneyTarget > moneyRaised)
 		{
 			manager.TriggerGameEnd(1);
 		}

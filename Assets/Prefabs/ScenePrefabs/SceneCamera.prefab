@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  zoomSpeed: 1
+  zoomSpeed: 6
   cam: {fileID: 7739696320365559427}
   shakeDuration: 0.1
   remainingShake: 0

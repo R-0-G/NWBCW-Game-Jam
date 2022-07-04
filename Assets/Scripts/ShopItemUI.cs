@@ -23,6 +23,7 @@ public class ShopItemUI : MonoBehaviour
 	[SerializeField] private HumanManager humanMan;
 
 	private bool isInteractable = false;
+	private bool newInteractableAll = false;
 
 	public void Configure(ShopItem item)
 	{
@@ -61,16 +62,26 @@ public class ShopItemUI : MonoBehaviour
 
 	private void HandleResourceUpdated(int count, Resource resource)
 	{
-		int shopIndex = shopItem.resources.IndexOf(resource);
-		if (shopIndex > -1) //if we cost this resoure in some way
+		newInteractableAll = true;
+		for (int i = 0; i < shopItem.resources.Count; i++)
 		{
-			int shopCost = shopItem.cost[shopIndex];
+			Resource r = shopItem.resources[i];
+			// int shopIndex = i;
+			// if (shopIndex > -1) //if we cost this resoure in some way
+			// {
+			int shopCost = shopItem.cost[i];
 
-			bool newInteractable = resource.count >= shopCost;
-			if (isInteractable != newInteractable)
+			bool newInteractable = r.count >= shopCost;
+			if (!newInteractable)
 			{
-				SetInteractable(newInteractable);
+				newInteractableAll = false;
 			}
+			// }
+		}
+
+		if (isInteractable != newInteractableAll)
+		{
+			SetInteractable(newInteractableAll);
 		}
 	}
 
@@ -94,6 +105,7 @@ public class ShopItemUI : MonoBehaviour
 		{
 			Resource shopItemResource = shopItem.resources[i];
 			int shopCount = shopItem.cost[i];
+
 			shopItemResource.Spend(shopCount);
 		}
 		Instantiate(placerPrefab).Configure(shopItem);

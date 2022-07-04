@@ -47,7 +47,6 @@ public class ResourceUICell : MonoBehaviour
 		if (resourceover == -1)
 		{
 			UpdateCount(resource.count);
-
 		}
 	}
 }

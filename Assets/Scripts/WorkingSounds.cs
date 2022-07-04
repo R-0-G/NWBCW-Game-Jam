@@ -14,36 +14,57 @@ public class WorkingSounds : MonoBehaviour
 	[SerializeField] private float fadeTime = 0.5f;
 
 	int lastHumansCuont = 0;
+	int lastIndex = 0;
 	bool wasZero = true;
+	int index = 0;
 
 	private void Awake()
 	{
 		noWorking.TransitionTo(0f);
 	}
 
+	private void replay()
+	{
+		source.clip = workingClips[index];
+		source.Play();
+	}
+
 	private void Update()
 	{
 		int count = manager.List.Where(x => x.StateMachine.CurrentState == HumanStateMachine.State.WORKING).Count();
+		index = Mathf.Clamp(count, 1, workingClips.Length) - 1;
 
 		if (count != lastHumansCuont)
 		{
-			source.Stop();
-			if (count > 0)
+			if (lastIndex != index || !source.isPlaying)
 			{
-				if (wasZero)
+				source.Stop();
+				CancelInvoke();
+				if (count > 0)
 				{
-					someWorking.TransitionTo(fadeTime);
+					if (wasZero)
+					{
+						someWorking.TransitionTo(fadeTime);
+						source.clip = workingClips[index];
+						source.Play();
+						Invoke("replay", source.clip.length);
+					}
+					if (index != lastIndex)
+					{
+						source.clip = workingClips[index];
+						source.Play();
+						Invoke("replay", source.clip.length);
+					}
 				}
-				int index = Mathf.Clamp(count, 1, workingClips.Length) - 1;
-				source.clip = workingClips[index];
-				source.Play();
-			}
-			else
-			{
-				if (!wasZero)
+				else
 				{
-					noWorking.TransitionTo(fadeTime);
+					if (!wasZero)
+					{
+						noWorking.TransitionTo(fadeTime);
+					}
 				}
+				lastIndex = index;
+
 			}
 			lastHumansCuont = count;
 			wasZero = count == 0;

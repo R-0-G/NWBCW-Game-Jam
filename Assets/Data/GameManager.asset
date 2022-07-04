@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b5d979a601b1a4fbbb0e0497ec19fe, type: 3}
   m_Name: GameManager
   m_EditorClassIdentifier: 
-  currentMoneyTarget: 10
-  dailyTargets: 0a000000140000001e000000
+  zombieCount: 0
+  unionCount: 0
+  currentMoneyTarget: 250
+  dailyTargets: 0a00000064000000fa000000
   timeManager: {fileID: 11400000, guid: e5f7b7b4b1c90934f9fc344e7af5fc39, type: 2}
   inventory: {fileID: 11400000, guid: 742831761df8aa64f8a43267cc7e3aaa, type: 2}
   jobs: {fileID: 11400000, guid: f1d4de9003a4f7048ba465b4e21545ca, type: 2}

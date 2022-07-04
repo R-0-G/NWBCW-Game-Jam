@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceName: Gems
   icon: {fileID: 21300000, guid: c1c9c237c3e89fc4e86f52e25c65fad5, type: 3}
-  count: 41
+  count: 10

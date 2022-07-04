@@ -51,6 +51,11 @@ public class HumanStateMachine : MonoBehaviour
 
 	public void TriggerStateChange(State nextState)
 	{
+		if (CurrentState == State.GOING_HOME && nextState != State.DESTROYING)
+		{
+			return;
+		}
+
 		if (onStateChanged != null)
 		{
 			State prevState = state;

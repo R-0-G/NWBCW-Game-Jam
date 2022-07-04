@@ -57,6 +57,7 @@ public class HumanAIController : MonoBehaviour
 
 	private void HandleStateChange(HumanStateMachine.State prev, HumanStateMachine.State next)
 	{
+		CancelInvoke();
 		switch (next)
 		{
 			case HumanStateMachine.State.FINDING_JOB:

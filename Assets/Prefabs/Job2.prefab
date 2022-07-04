@@ -111,9 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ec8583f0cfab04eb53ddc02ecca5bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 30
+  duration: 60
   cashReturn: 50
   manager: {fileID: 11400000, guid: bb19ca5e0e49ef54babe063d5dbe0a81, type: 2}
   jobType: {fileID: 11400000, guid: d47d363125123324c955b028b8d75f99, type: 2}
-  anim: {fileID: 3237464424374391470, guid: 8efa5e9762b2caa4d932bd697bf5ced2, type: 3}
+  activecol: {r: 0.9254902, g: 0.85490197, b: 0.8509804, a: 0.972549}
+  inactivecol: {r: 1, g: 1, b: 1, a: 1}
+  sp: {fileID: 926668122995074438}
   human: {fileID: 0}
